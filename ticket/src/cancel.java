@@ -16,7 +16,7 @@ public class cancel extends App {
                 tick = rs.getInt(3);
                 amount = rs.getInt(4);
             }
-            String q2="";
+            String q2=""; 
             if(seat.equals("vip"))
              q2 = "update seat set vip=vip+"+tick+" where ground_id="+gid+";";
              else if(seat.equals("firstclass"))
