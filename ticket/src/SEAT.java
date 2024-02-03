@@ -99,7 +99,7 @@ public class SEAT extends App {
             }
         }
     }
-
+//---------------------------------------------------------------------------------------------------------------------------------------------------
     public static void fcseat(int ui, int gi) {
         while (true) {
             System.out.println("NUMBER OF SEATS YOU NEEDED");
@@ -200,7 +200,7 @@ public class SEAT extends App {
             }
         }
     }
-
+//------------------------------------------------------------------------------------------------------------------------------------------------------
     public static void scseat(int ui, int gi) {
         while (true) {
             System.out.println("NUMBER OF SEATS YOU NEEDED");
@@ -298,7 +298,7 @@ public class SEAT extends App {
             }
         }
     }
-
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
     public static void stseat(int ui, int gi) {
         while (true) {
             System.out.println("NUMBER OF SEATS YOU NEEDED");
@@ -376,7 +376,6 @@ public class SEAT extends App {
                     System.out.println("COST: " + total);
                     System.out.println();
                 }
-
                 String qu = "update ticket set amount=" + cost + " where ticket_id=" + tic + "";
                 Statement sty = con.createStatement();
                 int d7 = sty.executeUpdate(qu);

@@ -44,7 +44,7 @@ public class ticket extends App {
         }
 
     }
-
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public static void booking() {
         Scanner s = new Scanner(System.in);
         while (true) {
@@ -61,7 +61,7 @@ public class ticket extends App {
             }
         }
     }
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
     public static void bookticket() {
         Scanner s = new Scanner(System.in);
         System.out.println();
