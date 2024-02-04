@@ -21,6 +21,7 @@ public class ticket extends App {
     public static void ticketbooking() {
 
         Connection con = DB.database();
+        while(true){
         System.out.println("TICKET BOOKING");
         System.out.println("**************");
         System.out.println();
@@ -30,20 +31,52 @@ public class ticket extends App {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
             System.out.printf("%-20s%-20s%-20s%-20s\n", "STADIUM ID", "STADIUM NAME", "STADIUM LOCATION",
-                    "AVAILABLE SEAT ALLOCATIO ");
+            "AVAILABLE SEAT ALLOCATIO ");
             while (rs.next()) {
                 System.out.printf("%-20d", rs.getInt(1));
                 System.out.printf("%-20s", rs.getString(2));
                 System.out.printf("%-20s", rs.getString(3));
                 System.out.printf("%-20d\n", rs.getInt(4));
             }
+            System.out.print("ENTER STATIUM ID: ");
+            int i=s.nextInt();
+            int k=0;
             System.out.println();
-            booking();
-        } catch (Exception e) {
+            String query1 = "select * from matches where ground_id="+i+"";
+            //1System.out.println("--------------------------------------------------------------------------------------------------------------------");
+            try {
+                Statement st1 = con.createStatement();
+                ResultSet rs1 = st1.executeQuery(query1);
+                System.out.printf("%-20s%-20s%-20s\n", "MATCH ID", "MATCH BETWEEN", "DATE");
+                while (rs1.next()) {
+                    System.out.printf("%-20d", rs1.getInt(1));
+                    System.out.printf("%-20s", rs1.getString(3));
+                    System.out.printf("%-20s\n", rs1.getDate(4));
+                }
+                if(! rs1.next())
+                {
+                    k=2;
+                }
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            if(k==2)
+            {
+                booking();
+            }
+            else
+            {
+                System.out.println("NO MATCHES AVAILABLE");
+               ticketbooking();
+            }
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
-
     }
+    }
+
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public static void booking() {
         Scanner s = new Scanner(System.in);
@@ -87,11 +120,14 @@ public class ticket extends App {
         System.out.print("ENTER THE GROUND ID : ");
         int gi = s.nextInt();
         System.out.println();
+        System.out.print("ENTER THE MATCH ID : ");
+        int mi = s.nextInt();
+        System.out.println();
         System.out.println("WHICH TYPE OF SEAT YOU WANT ");
         System.out.println("***************************");
         System.out.println();
-        String query1 = "select * from seat where ground_id='" + gi + "'";
-        String q = "select * from ticketcost1 where ground_id='" + gi + "'";
+        String query1 = "select * from seat where ground_id=" + gi + " AND match_id="+mi+"";
+        String q = "select * from ticketcost where ground_id=" + gi + " AND match_id="+mi+"";
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query1);
@@ -127,13 +163,13 @@ public class ticket extends App {
 
             System.out.println();
             if (choice == 1) {
-                SEAT.vip(id1, gi);
+                SEAT.vip(id1, gi,mi);
             } else if (choice == 2) {
-                SEAT.fcseat(id1, gi);
+                SEAT.fcseat(id1, gi,mi);
             } else if (choice == 3) {
-                SEAT.scseat(id1, gi);
+                SEAT.scseat(id1, gi,mi);
             } else if (choice == 4) {
-                SEAT.stseat(id1, gi);
+                SEAT.stseat(id1, gi,mi);
             } else if (choice == 5) {
                 bookticket();
             }
@@ -181,6 +217,6 @@ public class ticket extends App {
             // TODO: handle exception
             e.printStackTrace();
         }
-
+    
     }
 }
