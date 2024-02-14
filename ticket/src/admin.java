@@ -3,14 +3,16 @@ import java.sql.Statement;
 
 public class admin extends App{
     public static void works(){
-     System.out.println();
-     System.out.println("ADMIN ACCESS");
-     System.out.println();
-     System.out.println("1.PRINT ENTIRE USER\n2.PRINT THE DETAIS BASED ON ID\n3.REMOVE THE USER BY ID\n4.EXIT");
+     System.out.println("-------------------------------------------------------------------------------");
+     System.out.println("1.PRINT ENTIRE USER DETAILS\n2.PRINT THE DETAILS BASED ON ID\n3.REMOVE THE USER BY ID\n4.EXIT");
+     System.out.println("-------------------------------------------------------------------------------");
+
      System.out.println();
      System.out.print("ENTER YOUR CHOICE : ");
      int a=s.nextInt();
-     System.out.println();
+     System.out.println(); 
+     System.out.println("-------------------------------------------------------------------------------");
+
     if(a==1){
         String query = "select * from user where whom ='user'";
         try {
@@ -24,14 +26,18 @@ public class admin extends App{
                 System.out.printf("%-20s", rs.getString(3));
                 System.out.printf("%-20S\n", rs.getString(4));
             }
+            System.out.println("-------------------------------------------------------------------------------");
+
             System.out.println();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
     else if(a==2) {
-        System.out.print("ENTER YOUR ID : ");
+        System.out.print("ENTER  ID : ");
         int b=s.nextInt();
+        System.out.println("-------------------------------------------------------------------------------");
+        System.out.println();
         String query = "select * from user where user_id="+b+"";
         try {
             Statement st = con.createStatement();
@@ -50,9 +56,11 @@ public class admin extends App{
 
     }    
     else if(a==3){
-        System.out.print("ENTER YOUR ID : ");
+        System.out.print("ENTER  ID : ");
         int b=s.nextInt();
-        String query = "delete from user where whom ="+b+"";
+        System.out.println("-------------------------------------------------------------------------------");
+        System.out.println();
+        String query = "delete from user where user_id="+b+" and whom='user'";
         try {
             Statement st = con.createStatement();
             int  rs = st.executeUpdate(query);
@@ -66,7 +74,6 @@ public class admin extends App{
     }
     else if(a==4){
         ground.welcomeadmin();
-    }
-
+    }works();
     }
 }

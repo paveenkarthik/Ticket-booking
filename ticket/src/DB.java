@@ -9,7 +9,7 @@ static Connection con;
     public static Connection database() {
 
         try {
-
+            
             // Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/ticketbooking";
             String user = "root";

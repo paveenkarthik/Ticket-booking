@@ -4,8 +4,10 @@ import java.util.Date;
 public class SEAT extends App {
     public static void vip(int ui, int gi, int mi) {
         while (true) {
-            System.out.println("NUMBER OF SEATS YOU NEEDED");
+            System.out.print("NUMBER OF SEATS YOU NEEDED : ");
             int seat = s.nextInt();
+            System.out.println();
+            System.out.println("-------------------------------------------------------------------------------");
             String query = "update seat set vip=vip-" + seat + " where ground_id=" + gi + "  and match_id= " + mi + "";
             // String query1 = "update ground set total_seat_cap=total_seat_cap-" + seat + " where ground_id=" + gi + "";
             String q = "insert into ticket(user_id,ground_id,no_of_ticket,seat,amount,cur_date) values(?,?,?,?,?,?)";
@@ -91,11 +93,14 @@ public class SEAT extends App {
                 String qu = "update ticket set amount=" + cost + " where ticket_id=" + tic + "";
                 Statement sty = con.createStatement();
                 int d7 = sty.executeUpdate(qu);
-
+                System.out.println("-------------------------------------------------------------------------------");
                 System.out.println("1.PAY\n2.EXIT");
+                System.out.println("-------------------------------------------------------------------------------");
                 int what = s.nextInt();
                 if (what == 1 && d != 0  && d7 != 0 && d2 != 0) {
                     System.out.println("YOUR TICKET BOOKED SUCCESSFULLY.....!!");
+                    System.out.println("-------------------------------------------------------------------------------");
+
                     ticket.book();
                     break;
                 } else if (what == 2)
@@ -114,8 +119,10 @@ public class SEAT extends App {
     // ---------------------------------------------------------------------------------------------------------------------------------------------------
     public static void fcseat(int ui, int gi, int mi) {
         while (true) {
-            System.out.println("NUMBER OF SEATS YOU NEEDED");
+            System.out.print("NUMBER OF SEATS YOU NEEDED : ");
             int seat = s.nextInt();
+            System.out.println();
+            System.out.println("-------------------------------------------------------------------------------");
             int cost = 0;
             int ps = 0;
             int ts = 0;
@@ -129,6 +136,7 @@ public class SEAT extends App {
             String q = "insert into ticket(user_id,ground_id,no_of_ticket,seat,amount,cur_date) values(?,?,?,?,?,?)";
             int total = 0;
             try {
+                
                 Statement st = con.createStatement();
                 int d = st.executeUpdate(query);
 
@@ -202,11 +210,13 @@ public class SEAT extends App {
                 String qu = "update ticket set amount=" + cost + " where ticket_id=" + tic + "";
                 Statement sty = con.createStatement();
                 int d7 = sty.executeUpdate(qu);
-
+                System.out.println("-------------------------------------------------------------------------------");
                 System.out.println("1.PAY\n2.EXIT");
+                System.out.println("-------------------------------------------------------------------------------");
                 int what = s.nextInt();
                 if (what == 1 && d != 0  && d2 != 0) {
                     System.out.println("YOUR TICKET BOOKED SUCCESSFULLY.....!!");
+                    System.out.println("-------------------------------------------------------------------------------");
                     ticket.book();
                     break;
                 } else if (what == 2)
@@ -225,8 +235,10 @@ public class SEAT extends App {
     // ------------------------------------------------------------------------------------------------------------------------------------------------------
     public static void scseat(int ui, int gi, int mi) {
         while (true) {
-            System.out.println("NUMBER OF SEATS YOU NEEDED");
+            System.out.print("NUMBER OF SEATS YOU NEEDED : ");
             int seat = s.nextInt();
+            System.out.println();
+            System.out.println("-------------------------------------------------------------------------------");
             String query = "update seat set secondclass=secondclass-" + seat + " where ground_id=" + gi
                     + "  and match_id= " + mi + "";
             // String query1 = "update ground set total_seat_cap=total_seat_cap-" + seat + " where ground_id=" + gi + "";
@@ -309,7 +321,9 @@ public class SEAT extends App {
                     System.out.println("COST: " + total);
                     System.out.println();
                 }
+                System.out.println("-------------------------------------------------------------------------------");
                 System.out.println("1.PAY\n2.EXIT");
+                System.out.println("-------------------------------------------------------------------------------");
                 int what = s.nextInt();
 
                 String qu = "update ticket set amount=" + cost + " where ticket_id=" + tic + "";
@@ -318,6 +332,7 @@ public class SEAT extends App {
 
                 if (what == 1 && d != 0 && d2 != 0) {
                     System.out.println("YOUR TICKET BOOKED SUCCESSFULLY.....!!");
+                    System.out.println("-------------------------------------------------------------------------------");
                     ticket.book();
                     break;
                 } else if (what == 2)
@@ -337,8 +352,10 @@ public class SEAT extends App {
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------
     public static void stseat(int ui, int gi, int mi) {
         while (true) {
-            System.out.println("NUMBER OF SEATS YOU NEEDED");
+            System.out.println("NUMBER OF SEATS YOU NEEDED : ");
             int seat = s.nextInt();
+            System.out.println();
+            System.out.println("-------------------------------------------------------------------------------");
             String query = "update seat set standard=standard-" + seat + " where ground_id=" + gi + "  and match_id= "
                     + mi + "";
             // String query1 = "update ground set total_seat_cap=total_seat_cap-" + seat + " where ground_id=" + gi + "";
@@ -421,11 +438,13 @@ public class SEAT extends App {
                 String qu = "update ticket set amount=" + cost + " where ticket_id=" + tic + "";
                 Statement sty = con.createStatement();
                 int d7 = sty.executeUpdate(qu);
-
+                System.out.println("-------------------------------------------------------------------------------");
                 System.out.println("1.PAY\n2.EXIT");
+                System.out.println("-------------------------------------------------------------------------------");
                 int what = s.nextInt();
                 if (what == 1 && d != 0  && d2 != 0) {
                     System.out.println("YOUR TICKET BOOKED SUCCESSFULLY.....!!");
+                    System.out.println("-------------------------------------------------------------------------------");
                     ticket.book();
                     break;
                 } else if (what == 2)

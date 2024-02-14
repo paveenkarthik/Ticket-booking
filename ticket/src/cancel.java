@@ -26,31 +26,45 @@ public class cancel extends App {
              else if(seat.equals("standard"))
              q2 = "update seat set standard=standard"+tick+" where ground_id="+gid+";";
              
-             String q3="update ground set total_seat_cap=total_seat_cap+"+tick+" where ground_id="+gid+";";
+             //String q3="update ground set total_seat_cap=total_seat_cap+"+tick+" where ground_id="+gid+";";
+             
             Statement st1 = con.createStatement();
-            int d = st1.executeUpdate(q2);
-            
+            int d = st1.executeUpdate(q2);  
             System.out.println();
-            System.out.println("YOUR AMOUNT ("+amount+") WILL BE CREDITED IN 10 MINITES");
-            System.out.println();
-            System.out.println("IF YOU RECEIVED THE AMOUNT ENTER .1");
-            int a=s.nextInt();
-            if(a==1)
-            {
-                String q="delete from ticket where ticket_id="+id+"";
-                Statement stq = con.createStatement();
-                int d1 = stq.executeUpdate(q);
-                if(d1!=0)
-                {
-                    System.out.println("YOUR TICKETS ARE CANCELLED");
-                    ticket.book();
-                }
-
-            }
+          pay(amount, id);
 
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
         }
     }
+    public static void pay(int amount ,int id){
+        System.out.println("YOUR AMOUNT ("+amount+") WILL BE CREDITED IN 10 MINITES");
+        System.out.println();
+        System.out.println("IF YOU RECEIVED THE AMOUNT ENTER .1");
+        int a=s.nextInt();
+        if(a==1)
+        {try {
+            
+            String q="delete from ticket where ticket_id="+id+"";
+            Statement stq = con.createStatement();
+            int d1 = stq.executeUpdate(q);
+            if(d1!=0)
+            {
+                System.out.println("YOUR TICKETS ARE CANCELLED");
+                System.out.println("-------------------------------------------------------------------------------");
+
+                ticket.book();
+            }
+        else{
+           System.out.println("ENTER '1' ");
+           pay(amount, id);
+        }
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+
+    }
+}
 }
